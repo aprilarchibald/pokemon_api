@@ -1,17 +1,22 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import './App.css';
+import axios from 'axios';
 
 function App() {
 
 const [poke, setPoke] = useState([])
 
+useEffect( () => {
+  // getPokemon()
+  //can put the function itself in here
+
+}, [])
+
   const getPokemon = () => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=807")
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=807")
       .then(response => {
-        return response.json();
-      }).then(response => {
-      console.log(response.results);
-      setPoke(response.results)
+      console.log(response.data.results);
+      setPoke(response.data.results)
       }).catch(err=>{
       console.log(err);
     });
@@ -19,7 +24,8 @@ const [poke, setPoke] = useState([])
 
   return (
     <div className="App">
-      <button onClick={getPokemon}>Fetch Pokemon</button>
+      {/* <button onClick={getPokemon}>Fetch Pokemon</button> */}
+      <button onClick={getPokemon}>Axios Pokemon</button>
       {/* poke: {JSON.stringify(poke)} */}
       <ul>
           {poke.map( (onePoke, idx) =>{
