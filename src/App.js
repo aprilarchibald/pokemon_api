@@ -21,6 +21,18 @@ useEffect( () => {
       console.log(err);
     });
   }
+  // Fetch Method
+  // const getPokemon = () => {
+  //   fetch("https://pokeapi.co/api/v2/pokemon?limit=807")
+  //     .then(response => {
+  //       return response.json();
+  //     }).then(response => {
+  //     console.log(response.results);
+  //     setPoke(response.results)
+  //     }).catch(err=>{
+  //     console.log(err);
+  //   });
+  // }
 
   return (
     <div className="App">
